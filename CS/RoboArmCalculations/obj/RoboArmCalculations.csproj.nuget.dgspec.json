@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Romy I. Chu III\\Documents\\GitHub\\ELEC3907-TeamB3-Code\\CS\\RoboArmCalculations\\RoboArmCalculations.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Romy I. Chu III\\Documents\\GitHub\\ELEC3907-TeamB3-Code\\CS\\RoboArmCalculations\\RoboArmCalculations.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Romy I. Chu III\\Documents\\GitHub\\ELEC3907-TeamB3-Code\\CS\\RoboArmCalculations\\RoboArmCalculations.csproj",
+        "projectName": "RoboArmCalculations",
+        "projectPath": "C:\\Users\\Romy I. Chu III\\Documents\\GitHub\\ELEC3907-TeamB3-Code\\CS\\RoboArmCalculations\\RoboArmCalculations.csproj",
+        "packagesPath": "C:\\Users\\Romy I. Chu III\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Romy I. Chu III\\Documents\\GitHub\\ELEC3907-TeamB3-Code\\CS\\RoboArmCalculations\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Romy I. Chu III\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
