@@ -62,7 +62,7 @@ namespace RoboArmCalculations{
         }
         
 
-        public double calcDistance(int pix, int piy, int pfx, int pfy){
+        public double calcDistance(float pix, float piy, float pfx, float pfy){
             float dist = binPow((pfx - pix), 2) + binPow(pfy - piy, 2);
             return calcSqrt(dist);
         }
@@ -80,9 +80,9 @@ namespace RoboArmCalculations{
             return Tuple.Create(servoShoulderAngle, servoElbowAngle);
         }
 
-        public double calculateBaseAngle(Tuple<int,int> scrRes, Tuple<int,int> pointCoords){
-            int normPX = pointCoords.Item1 - scrRes.Item1 / 2;
-            int normPY = scrRes.Item2 - pointCoords.Item2;
+        public double calculateBaseAngle(double scrW, double scrH, double pntX, double pntY){
+            int normPX = (int)roundTo(pntX - scrW / 2, 1);
+            int normPY = (int)roundTo(scrH - pntY, 1);
 
             double angle = roundTo(atanApprox(normPX / normPY), 1.8);
             if(angle <= -90){ return -90; }
