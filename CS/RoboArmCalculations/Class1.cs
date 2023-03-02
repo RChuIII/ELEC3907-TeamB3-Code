@@ -70,6 +70,7 @@ namespace RoboArmCalculations{
             return baseN * (int)(num / baseN);
         }
 
+        // Yeah, fuck you. WHat you did is wrong, idiot!
         public Tuple<int,int> calculateJointAngles(int armLength, float distance){
             if(distance >= (int)(armLength * 2)){ return Tuple.Create(0, 180); }
             if(distance <= 0 ){ return Tuple.Create(90, 0); }
