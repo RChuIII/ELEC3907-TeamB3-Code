@@ -13,3 +13,13 @@ void setup() {
 void loop() {
  baseStepper.step(90);
 }
+/*
+  -> Write calibration code for accelerometer
+  -> Integrate accelerometer and bluetooth moduels
+  -> Read Accelerometer data from bluetooth device
+  -> Accelerometer to maths
+  -> Clean up the maths code
+  -> write a better python main program.
+
+
+*/
