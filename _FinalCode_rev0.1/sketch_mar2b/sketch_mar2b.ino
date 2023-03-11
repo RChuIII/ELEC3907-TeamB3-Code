@@ -1,15 +1,16 @@
 #include <SoftwareSerial.h>
-#include <Stepper.h>
+#include <ezButton.h>
 
-Stepper arm_base_stepper(NUM_STEPS, 8,9,10,11);
 SoftwareSerial bt_module_glove(10,11);
+ezButton calibration_button(7);
+ezButton switch_mode(8);
 
-const int NUM_STEPS = 200;
+
 
 void setup() {
   serial.begin(9600);
   bt_module_glove.begin(9600);
-  arm_base_stepper.setSSpeed(60);
+  switch_mode.setDebounceTime(50);
 
   bt_module_glove.print("AT+BAUD4");
   Serial.println("Enter Command: ");
@@ -18,7 +19,16 @@ void setup() {
 }
 
 void loop() {
+  switch_mode.loop();
+
   int accel_x_axis = analogRead();
+  int accel_y_axis = analogRead();
+
+  Serial.write(accel_x_axis + " " + accel_y_axis + " " + switch_mode.isPressed())
+  if (Serial.available()){
+    hc06.write(Serial.read());
+  }
+
 }
 
 

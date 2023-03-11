@@ -1,24 +1,23 @@
 """
 Required Modules:
-    -> Write calibration code for accelerometer
-    -> Integrate accelerometer and bluetooth moduels
-    -> Read Accelerometer data from bluetooth device
+    //-> Write calibration code for accelerometer
+    //-> Read Accelerometer data from bluetooth device
+    //-> Clean up the maths code
+    //-> write a better python main program.
+    ->Thursday-> Integrate accelerometer and bluetooth moduels
     -> Accelerometer to maths(
-    -> Clean up the maths code
-    -> write a better python main program.
 """
 
 """
 Arm-Glove System
     -> Glove(arduino nano) sends signal via bluetooth
         -> Sent signals:
-            -> [glove_XTilt, glove_YTilt, axis_mode, claw_position, claw_rotation]
+            -> [glove_XTilt, glove_YTilt, axis_mode, claw_acutation, claw_rotation]
             -> [analog, analog, digital, analog, digital]
 
     -> Raspberry PI recieves data
     -> Raspberry PI parses data
         -> Takes glove_XTilt, golve_YTilt, and axis_mode to calculate position
-        -> Takes claw_position to calcualte the claw grip position
         -> Takes claw_rotation to determine if 0_deg or 90_deg rotation
 
     -> Raspberry PI sends data to arduino Mega

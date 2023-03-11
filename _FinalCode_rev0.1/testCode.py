@@ -1,21 +1,27 @@
-def roundTo_list(nums: list, base: float) -> list:
-    """
-    >>> roundTo_list([1.4, 1, 5, 6.34, 12.543, 1209.120, 0.88], 1.8)
-    [0.0, 0.0, 3.6, 5.4, 10.8, 1207.8, 0.0]
-    >>> roundTo_list([1.4, 1, 5, 6.34, 12.543, 1209.120, 0.88], 2.5)
-    [0.0, 0.0, 5.0, 5.0, 12.5, 1207.5, 0.0]
-    >>> roundTo_list([1.4, 1, 5, 6.34, 12.543, 1209.120, 0.88], 10)
-    [0, 0, 0, 0, 10, 1200, 0]
-    >>> roundTo_list([1.4, 1, 5, 6.34, 12.543, 1209.120, 0.88], 1)
-    [1, 1, 5, 6, 12, 1209, 0]
-    """
-    roundedList = [(base * round(num//base)) for num in nums]
-    return roundedList
+import servoCalculations as scalc
 
 
+#print(scalc.calculate_2Joint_6DoF([10,0,4]))
+#print(scalc.calculate_2Joint_6DoF([10,10,2]))
+#print(scalc.calculate_2Joint_6DoF([10,17.32051,3]))
+#print(scalc.calculate_2Joint_6DoF([17.32051,10,0]))
+#
+#print(scalc.calculate_2Joint_6DoF([20,0,0]))
+#print(scalc.calculate_2Joint_6DoF([17.32051,0,0]))
+#print(scalc.calculate_2Joint_6DoF([10,0,4]))
 
 
-print(roundTo_list([1.4, 1, 5, 6.34, 12.543, 1209.120, 0.88], 1.8))
-print(roundTo_list([1.4, 1, 5, 6.34, 12.543, 1209.120, 0.88], 2.5))
-print(roundTo_list([1.4, 1, 5, 6.34, 12.543, 1209.120, 0.88], 10))
-print(roundTo_list([1.4, 1, 5, 6.34, 12.543, 1209.120, 0.88], 1))
+someList = [10,9,8,7,6,4,2,1,3,11]
+
+
+def bubble_sort(arr):
+    for i in range(9):
+        for j in range(9):
+            if arr[j + 1] < arr[j]:
+                temp = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = temp
+
+bubble_sort(someList)
+
+print(someList)
