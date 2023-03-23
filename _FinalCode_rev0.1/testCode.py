@@ -1,17 +1,47 @@
 import servoCalculations as scalc
+from robotArm import RobotArm
 
 
-#print(scalc.calculate_2Joint_6DoF([10,0,4]))
-#print(scalc.calculate_2Joint_6DoF([10,10,2]))
-#print(scalc.calculate_2Joint_6DoF([10,17.32051,3]))
-#print(scalc.calculate_2Joint_6DoF([17.32051,10,0]))
-#
-#print(scalc.calculate_2Joint_6DoF([20,0,0]))
-#print(scalc.calculate_2Joint_6DoF([17.32051,0,0]))
-#print(scalc.calculate_2Joint_6DoF([10,0,4]))
+roboArm = RobotArm(135,180,120,165)
+
+#print(roboArm.get_joint_angles([0.0,-0.0, 135]))
+#roboArm.get_joint_angles([75.0,-0.0, 135])
+roboArm.get_joint_angles([0.0,255, 135])
+#roboArm.get_joint_angles([-75,-255, 135])
+#roboArm.get_joint_angles([-300,-37.5, 135])
 
 
-someList = [10,9,8,7,6,4,2,1,3,11]
+
+
+
+"""print(roboArm.get_joint_angles([10,0,4]))
+print(scalc.calculate_2Joint_6DoF([10,0,4]))
+print()
+print(roboArm.get_joint_angles([10,10,2]))
+print(scalc.calculate_2Joint_6DoF([10,10,2]))
+print()
+print(roboArm.get_joint_angles([10,17.32051,3]))
+print(scalc.calculate_2Joint_6DoF([10,17.32051,3]))
+print()
+print(roboArm.get_joint_angles([17.32051,10,0]))
+print(scalc.calculate_2Joint_6DoF([17.32051,10,0]))
+print()
+print(roboArm.get_joint_angles([20,0,0]))
+print(scalc.calculate_2Joint_6DoF([20,0,0]))
+print()
+print(roboArm.get_joint_angles([17.32051,0,0]))
+print(scalc.calculate_2Joint_6DoF([17.32051,0,0]))
+print()
+print(roboArm.get_joint_angles([10,0,4]))
+print(scalc.calculate_2Joint_6DoF([10,0,4]))
+print()
+"""
+
+
+
+
+
+"""someList = [10,9,8,7,6,4,2,1,3,11]
 
 
 def bubble_sort(arr):
@@ -24,4 +54,4 @@ def bubble_sort(arr):
 
 bubble_sort(someList)
 
-print(someList)
+print(someList)"""
