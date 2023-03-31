@@ -1,7 +1,7 @@
 #include <Stepper.h>
 
 const int numSteps = 200; // # of stepper motor steps (Nema17 = 200)
-Stepper baseStepper(numSteps, 8, 9, 10, 11); // Stepper, controls pins 1-4
+Stepper baseStepper(numSteps, 22, 23, 24, 25); // Stepper, controls pins 1-4
 byte rx_byte = 0;        // stores received byte
 
 void setup() {
@@ -11,7 +11,10 @@ void setup() {
 }
 
 void loop() {
- baseStepper.step(90);
+  baseStepper.step(100);
+  delay(500);
+  baseStepper.step(100);
+  delay(500);
 }
 /*
   -> Write calibration code for accelerometer

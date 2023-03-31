@@ -1,0 +1,6 @@
+NOTE:
+    Check if bluetooth is available { systemctl status bluetooth.service }
+    When connecting the raspbery pi to the HC06, check { bluetoothctl } > { scan on } to find the HC06 (check if it is broadcasting)
+    if no worky try turning it off an on again
+    If still no worky try { sudo rfcomm bind rfcomm0 MAC:ADDRESS:HERE }
+    If STILL no worky, not my problem anymore. Sounds like a hardware problem.

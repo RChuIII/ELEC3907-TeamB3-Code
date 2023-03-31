@@ -49,7 +49,7 @@ struct coordinates {
 };
 
 // CONSTS
-double FLEX_SENSOR_THRESHOLD_VOLTAGE = 950.0;
+double FLEX_SENSOR_THRESHOLD_VOLTAGE = 800.0;
 
 
 void setup() {
@@ -107,10 +107,11 @@ void loop() {
                    + " " + String(current_mode)
                    + " " + String(claw_act)
                    + " " + String(isRotated)
-                   + "\n\r";
+                   + " ";
 
     bt_module.print(output);
     Serial.print(output);
+    Serial.print("\n");
     //delay(10);
   }
   
@@ -156,23 +157,27 @@ coordinates auto_calibration(){
   double nrmY = 0;
   
   for (int i = 0; i < numSamples; i++) {
-    arrX[i] = analogRead(accel_X_pin);
-    arrY[i] = analogRead(accel_Y_pin);
+    arrX[i] = analogRead(accel_X_pin)* 5 / 1024.0;
+    arrY[i] = analogRead(accel_Y_pin)* 5 / 1024.0;
+
+    if ((arrX[i] < 0.5) || (arrX[i] > 3.0) || (arrY[i] < 0.5) || (arrY[i] > 3)){
+      i--;
+    }
+    Serial.print("Point Sampled : X=" + String(arrX[i]) + " | Y=" + String(arrY[i]) + "\n");
     delay(100);
   }
   
   ace_sorting::quickSortMiddle(arrX, 100);
   ace_sorting::quickSortMiddle(arrY, 100);
 
-  for (int n = numSamples/num_limit; n < (numSamples - numSamples/num_limit) - 1; n++) {
-    sumX += arrX[n] / 1024.0;
-  }
-  
-  for (int n = numSamples/num_limit; n < (numSamples - numSamples/num_limit) - 1; n++) {
-    sumY += arrY[n] / 1024.0;
+  for (int n = num_limit - 1; n < (numSamples - num_limit) - 1; n++) {
+    sumX += arrX[n];
+    sumY += arrY[n];
+    Serial.println("SumX =" + String(sumX) + ", SumY =" + String(sumY));
   }
 
   double rec_samples = numSamples - 2.0 * (numSamples / num_limit);
   isCalibrated = 1;
-  return { (sumX/rec_samples) * 50 , (sumY/rec_samples) * 50 };
+  Serial.print("Average: X=" + String(sumX/rec_samples) + " | Y=" + String(sumY/rec_samples) + "\n");
+  return { (sumX/rec_samples) * 10 , (sumY/rec_samples) * 10 };
 }
