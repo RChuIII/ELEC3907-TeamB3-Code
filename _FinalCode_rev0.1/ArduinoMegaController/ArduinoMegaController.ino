@@ -32,12 +32,50 @@ void GetData(){
   }
 }
 
-void smoothMovement(){
-  int shoulder_diff = abs(cur_angles[1] - old_angles[1]);
-  if (shoulder_diff) {
-    for ( {
-      // INCREMENT THE ANGLE
+void smoothMovement(int motor_num, double new_angle, double old_angle){
+  double angle_change = 0;
+    for (angle_change = old_angle; i < new_angle; angle_change+=2.5) {
+      srituhobby.setPWM(motor_num, 0, angle_change);
+
     }
+    if (angle_change > new_angle) {
+      srituhobby.setPWM(motor_num, 0, new_angle);
+    }
+    
+}
+
+
+
+
+
+
+void loop() {
+  delay(4000);
+  int CCW = SHOULDERservoMAX;
+  for (int CW = SHOULDERservoMIN; CW <= SHOULDERservoMAX; CW++) {
+    CCW = CCW - 1;
+    srituhobby.setPWM(0, 0, CW-0);
+    srituhobby.setPWM(1, 0, CCW);
+    delay(5);
   }
-  
+
+  delay(2000);
+  for (int ELBOWrot = ELBOWservoMAX; ELBOWrot >= ELBOWservoMIN; ELBOWrot--) {
+    srituhobby.setPWM(2, 0, ELBOWrot);
+    delay(5);
+  }
+  delay(2000);
+  for (int ELBOWrot = ELBOWservoMIN; ELBOWrot <= ELBOWservoMAX; ELBOWrot++) {
+    srituhobby.setPWM(2, 0, ELBOWrot);
+    delay(5);
+  }
+  delay(3000);
+  CCW = SHOULDERservoMIN;
+  for (int CW = SHOULDERservoMAX; CW >= SHOULDERservoMIN; CW--) {
+    CCW = CCW + 1;
+    srituhobby.setPWM(0, 0, CW-0);
+    srituhobby.setPWM(1, 0, CCW);
+    delay(5);
+  }
+  delay(5000);
 }

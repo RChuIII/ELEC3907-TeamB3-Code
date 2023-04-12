@@ -88,20 +88,22 @@ void loop() {
     double x_sums = 0;
     double y_sums = 0;
     double x_avg, y_avg;
-
+/*
     for (int i = 0; i < 10; i++) {
       x_sums += analogRead(accel_X_pin) * 5.0 / 1024 * 10;
       y_sums += analogRead(accel_Y_pin) * 5.0 / 1024 * 10;
       delay(10);
     }
     x_avg = round(x_sums / 10);
-    y_avg = round(y_sums / 10);
+    y_avg = round(y_sums / 10);*/
 
-    double avg_X = round((x_avg - normX) * 10) / 10;
-    double avg_Y = round((y_avg - normY) * 10) / 10;
+    double avg_X = round((analogRead(accel_X_pin) * 5.0 / 1024 * 10 - normX) * 10) / 10;
+    double avg_Y = round((analogRead(accel_Y_pin) * 5.0 / 1024 * 10 - normY) * 10) / 10;
 
 
     check_inputs(mode_select_button.isPressed(), claw_rotation_button.isPressed(), flex_read);
+    
+    
     String output = String(avg_X,2)
                    + " " + String(avg_Y,2)
                    + " " + String(current_mode)
@@ -112,7 +114,7 @@ void loop() {
     bt_module.print(output);
     Serial.print(output);
     Serial.print("\n");
-    //delay(10);
+    delay(100);
   }
   
   // Run the calibration if button is pressed
@@ -163,7 +165,7 @@ coordinates auto_calibration(){
     if ((arrX[i] < 0.5) || (arrX[i] > 3.0) || (arrY[i] < 0.5) || (arrY[i] > 3)){
       i--;
     }
-    Serial.print("Point Sampled : X=" + String(arrX[i]) + " | Y=" + String(arrY[i]) + "\n");
+    //Serial.print("Point Sampled : X=" + String(arrX[i]) + " | Y=" + String(arrY[i]) + "\n");
     delay(100);
   }
   
@@ -173,11 +175,11 @@ coordinates auto_calibration(){
   for (int n = num_limit - 1; n < (numSamples - num_limit) - 1; n++) {
     sumX += arrX[n];
     sumY += arrY[n];
-    Serial.println("SumX =" + String(sumX) + ", SumY =" + String(sumY));
+    //Serial.println("SumX =" + String(sumX) + ", SumY =" + String(sumY));
   }
 
   double rec_samples = numSamples - 2.0 * (numSamples / num_limit);
   isCalibrated = 1;
-  Serial.print("Average: X=" + String(sumX/rec_samples) + " | Y=" + String(sumY/rec_samples) + "\n");
+  //Serial.print("Average: X=" + String(sumX/rec_samples) + " | Y=" + String(sumY/rec_samples) + "\n");
   return { (sumX/rec_samples) * 10 , (sumY/rec_samples) * 10 };
 }

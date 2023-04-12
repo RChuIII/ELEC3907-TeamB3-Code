@@ -97,4 +97,3 @@ def clamp(num, min_value, max_value):
 
 initializaion()
 loop()
-
